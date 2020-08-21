@@ -24141,21 +24141,94 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 
   var _super = _createSuper(App);
 
   function App() {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "SpotifyApi", function () {
+      var name = _this.state.artistQuery;
+      fetch("https://spotify-api-wrapper.appspot.com/artist/" + name).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        console.log(data);
+
+        if (data.artists.total > 0) {
+          var artist = data.artists.items[0];
+
+          _this.setState({
+            artist: artist
+          });
+
+          fetch("https://spotify-api-wrapper.appspot.com/artist/" + artist.id + "/top-tracks").then(function (res) {
+            return res.json();
+          }).then(function (data) {
+            console.log(data);
+
+            _this.setState({
+              tracks: data.tracks
+            });
+          }).catch(function (error) {
+            return alert(error.message);
+          });
+        } // JSON data parsed by `data.json()` call
+
+      }).catch(function (error) {
+        return alert(error.message);
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      artistQuery: '',
+      artist: null,
+      tracks: []
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "updateArtistQuery", function (event) {
+      _this.setState({
+        artistQuery: event.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleKeyPress", function (event) {
+      if (event.key === 'Enter') {
+        _this.searchArtist();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "searchArtist", function () {
+      _this.SpotifyApi();
+
+      console.log(_this.state);
+    });
+
+    return _this;
   }
 
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react.default.createElement("div", null, "React App");
+      console.log('this.state', this.state);
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Music Master"), /*#__PURE__*/_react.default.createElement("input", {
+        onChange: this.updateArtistQuery,
+        onKeyPress: this.handleKeyPress,
+        placeholder: "Search Artist"
+      }), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.searchArtist
+      }, "Search"));
     }
   }]);
 
@@ -24206,7 +24279,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62615" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57909" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
