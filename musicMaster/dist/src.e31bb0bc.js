@@ -24124,9 +24124,15 @@ var Artist = function Artist(_ref) {
       name = artist.name,
       followers = artist.followers,
       genres = artist.genres;
-  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h3", null, name), /*#__PURE__*/_react.default.createElement("p", null, followers.total), /*#__PURE__*/_react.default.createElement("p", null, genres.join(',')), /*#__PURE__*/_react.default.createElement("img", {
+  return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null), /*#__PURE__*/_react.default.createElement("h3", null, name), /*#__PURE__*/_react.default.createElement("p", null, followers.total + ' Followers'), /*#__PURE__*/_react.default.createElement("p", null, 'Generes : ' + genres.join('/')), /*#__PURE__*/_react.default.createElement("img", {
     src: images[0].url,
-    alt: "artist-profile"
+    alt: "artist-profile",
+    style: {
+      width: 200,
+      height: 200,
+      borderRadius: 100,
+      objectFit: 'cover'
+    }
   }));
 };
 
