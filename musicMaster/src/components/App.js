@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-
+import Artist from './Artist';
 class App extends Component{
   
   SpotifyApi = () =>  {
@@ -49,6 +49,7 @@ class App extends Component{
         onKeyPress={this.handleKeyPress} 
         placeholder="Search Artist"/>
         <button onClick={this.searchArtist}>Search</button>
+        <Artist artist= {this.state.artist} />
       </div>
     );
   }
