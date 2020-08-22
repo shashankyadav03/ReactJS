@@ -24105,7 +24105,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Artist.js":[function(require,module,exports) {
+},{"./assets/musicbck.jpg":[["musicbck.1a79fc3a.jpg","assets/musicbck.jpg"],"assets/musicbck.jpg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/Artist.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -24128,9 +24128,9 @@ var Artist = function Artist(_ref) {
     src: images[0].url,
     alt: "artist-profile",
     style: {
-      width: 200,
-      height: 200,
-      borderRadius: 100,
+      width: 220,
+      height: 220,
+      borderRadius: 120,
       objectFit: 'cover'
     }
   }));
@@ -24200,6 +24200,7 @@ var Tracks = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "playAudio", function (previewUrl) {
       return function () {
+        if (!previewUrl) return null;
         var audio = new Audio(previewUrl);
 
         if (!_this.state.playing) {
@@ -24249,7 +24250,7 @@ var Tracks = /*#__PURE__*/function (_Component) {
           onClick: _this2.playAudio(preview_url),
           style: {
             float: "left",
-            margin: '15px'
+            margin: '20px'
           }
         }, /*#__PURE__*/_react.default.createElement("img", {
           src: album.images[0].url,

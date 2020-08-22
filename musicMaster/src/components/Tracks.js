@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 class Tracks extends Component {
     state = {playing: false, audio:null,playPrevUrl: null};
     playAudio = previewUrl => () =>{
+        if(!previewUrl)
+          return null;
         const audio = new Audio(previewUrl);
         if(!this.state.playing){
         audio.play();
@@ -31,7 +33,7 @@ class Tracks extends Component {
                    tracks.map(tracks =>{
                        const {id,name,album,preview_url} = tracks;
                        return(
-                        <div key={id} onClick={this.playAudio(preview_url)} style={{float:"left",margin:'15px'}}>
+                        <div key={id} onClick={this.playAudio(preview_url)} style={{float:"left",margin:'20px'}}>
                             <img src={album.images[0].url} 
                             alt = 'track'
                             style={{
