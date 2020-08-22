@@ -24250,7 +24250,9 @@ var Tracks = /*#__PURE__*/function (_Component) {
           onClick: _this2.playAudio(preview_url),
           style: {
             float: "left",
-            margin: '20px'
+            margin: '20px',
+            position: "relative",
+            display: "inline-block"
           }
         }, /*#__PURE__*/_react.default.createElement("img", {
           src: album.images[0].url,
@@ -24365,7 +24367,7 @@ var App = /*#__PURE__*/function (_Component) {
     });
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      artistQuery: '',
+      artistQuery: 'bruno',
       artist: null,
       tracks: []
     });
@@ -24456,7 +24458,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51563" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58797" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

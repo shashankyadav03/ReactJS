@@ -33,7 +33,7 @@ class Tracks extends Component {
                    tracks.map(tracks =>{
                        const {id,name,album,preview_url} = tracks;
                        return(
-                        <div key={id} onClick={this.playAudio(preview_url)} style={{float:"left",margin:'20px'}}>
+                        <div key={id} onClick={this.playAudio(preview_url)} style={{float:"left",margin:'20px',position:"relative",display:"inline-block"}}>
                             <img src={album.images[0].url} 
                             alt = 'track'
                             style={{

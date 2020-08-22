@@ -26,12 +26,13 @@ class App extends Component{
     .catch(error => alert(error.message));
     }
 
-  state ={artistQuery: '',
+  state ={artistQuery: 'bruno',
           artist: null, tracks: []};
   updateArtistQuery = event => {
     this.setState({artistQuery: event.target.value});
   }
   handleKeyPress = event => {
+    
     if(event.key === 'Enter'){
       this.searchArtist();
     }
